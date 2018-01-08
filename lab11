@@ -1,0 +1,79 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+template <typename Plate>
+class Stack{
+
+    vector<Plate> vec;
+
+public:
+
+    bool empty(){
+        return vec.empty();
+    }
+
+    void push( const Plate& item ){
+        vec.push_back( item );
+    }
+
+    Plate& top(){
+        if( empty() )
+            cout << "Stiva goala\n" ;
+
+        return vec.back();
+    }
+
+    void pop(){
+        if( empty() ){
+            cout << "Eroare: Stiva este goala!\n" ;
+            return;
+        }
+        vec.pop_back();
+    }
+
+    void print(){
+        for( unsigned int i = 0 ; i < vec.size() ; i++ )
+            cout << vec[ i ] << " ";
+
+        cout << endl;
+    }
+
+
+};
+
+int main()
+{
+    Stack<char> st_char;
+    Stack<float> st_float;
+
+    st_char.pop();
+    
+    st_float.push( 1.21 );
+    st_float.push( 2.0 );
+    st_float.push( 78.54 );
+    
+    st_char.push( 'm' );
+    st_char.push( 'a' );
+    st_char.push( 'r' );
+
+
+    cout << "st_char: ";
+    st_char.print();
+
+    cout << "st_float: ";
+    st_float.print();
+
+    cout << endl;
+    cout << "st_char.top: " << st_char.top() << endl;
+    cout << "st_float.top: " << st_float.top() << endl;
+
+    st_char.pop();
+    st_float.pop();
+
+    cout << endl;
+    cout << "st_char.top: " << st_char.top() << endl;
+    cout << "st_float.top: " << st_float.top() << endl;
+
+    return 0;
+}
